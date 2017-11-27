@@ -18,7 +18,20 @@ return [
     // 模块初始化
     'module_init'  => [],
     // 操作开始执行
-    'action_begin' => [],
+    'action_begin' => [
+//        'app\\index\\behavior\\Test',
+//        function(){
+//    echo "闭包";
+//        }
+
+        function(){
+//            $myfile = fopen(date('Y-m-d').'log.txt', "a+");
+            $txt =date('Y-m-d H:i:s').'---IP地址为：'.request()->ip().'访问了 '.request()->controller().'/'.request()->action().' 页面'."\n" ;
+//            fwrite($myfile, $txt);
+//            fclose($myfile);
+            file_put_contents(ROOT_PATH."/public/log/".date('Y-m-d').'log.txt',$txt,FILE_APPEND);
+        }
+    ],
     // 视图内容过滤
     'view_filter'  => [],
     // 日志写入

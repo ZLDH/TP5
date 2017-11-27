@@ -127,7 +127,7 @@ return [
         // 模板路径
         'view_path'    => '',
         // 模板后缀
-        'view_suffix'  => 'html',
+        'view_suffix'  => 'php',
         // 模板文件名分隔符
         'view_depr'    => DS,
         // 模板引擎普通标签开始标记
@@ -165,6 +165,13 @@ return [
     // +----------------------------------------------------------------------
 
     'log'                    => [
+        // 开启用户记录日志
+        'OPERATION_ON'=>true,
+        'OPERATION_MEMBER'=>'learn_member',
+        //分别为web,interface也就是网站,和接口
+         'OPERATION_TYPE'=>'web',
+        //如果后台就取session,如果接口就直接取get,post请求的值
+        'OPERATION_MEMBER_ID'=>'member_id',
         // 日志记录方式，内置 file socket 支持扩展
         'type'  => 'File',
         // 日志保存目录
@@ -237,5 +244,27 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
+    ],
+    'captcha'=>[
+        // 验证码字体大小
+        'fontSize'    =>    30,
+        // 验证码位数
+        'length'      =>    2,
+        // 关闭验证码杂点
+        'useNoise'    =>    false,
+        //是否画混淆曲线
+        'seCurve' => true,
+        //验证码成功后是否重置
+        'reset' =>true,
+//        'useZh' => true,
+    ],
+    // auth配置
+    'auth'  => [
+        'auth_on'           => 1, // 权限开关
+        'auth_type'         => 1, // 认证方式，1为实时认证；2为登录认证。
+        'auth_group'        => 'auth_group', // 用户组数据不带前缀表名
+        'auth_group_access' => 'auth_group_access', // 用户-用户组关系不带前缀表名
+        'auth_rule'         => 'auth_rule', // 权限规则不带前缀表名
+        'auth_user'         => 'member', // 用户信息不带前缀表名
     ],
 ];

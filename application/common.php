@@ -10,3 +10,14 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+//全局函数用来返回JSON对象
+
+function api_json($data,$status=true,$msg="成功"){
+
+    $result = [
+        'data'=>$data,
+        'success'=>$status,
+        'errorMsg'=>$msg,
+    ];
+    return json($result);
+}
