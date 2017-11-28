@@ -97,9 +97,9 @@ class UserController extends Controller
    return api_json($result);
 }
 //分类列表
-    public function category()
+    public function category($parent_id)
     {
-        $good = Db::name("goods_category")->select();
+        $good = Db::name("goods_category")->where(['parent_id'=>$parent_id])->select();
         $a=[];
         foreach ($good as $k=>$v){
             $restul=[
@@ -111,7 +111,7 @@ class UserController extends Controller
             ];
         }
 
-    return api_json($restul);
+    return api_json($good);
 }
 //品牌列表
     public function brand($id)
